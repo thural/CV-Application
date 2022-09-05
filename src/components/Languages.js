@@ -8,7 +8,10 @@ class Languages extends Component {
 
   render() {
     return (
-      <input type="input" id="language" name="language" placeholder="language"></input>
+      <div>
+        <h3>Languages</h3>
+        <input type="input" id="language" name="language" placeholder="language"></input>
+      </div>
     )
   }
 }

@@ -6,7 +6,7 @@ class Personal extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="Personal">
       <input type="text" id="name" name="name" placeholder="name"></input>
       <input type="text" id="title" name="title" placeholder="title"></input>
       <input type="text" id="address" name="address" placeholder="address"></input>

@@ -8,7 +8,10 @@ class Skills extends Component {
 
   render() {
     return (
-      <input type="input" id="skill" name="skill" placeholder="skill"></input>
+      <div>
+        <h3>Skills</h3>
+        <input type="input" id="skill" name="skill" placeholder="skill"></input>
+      </div>
     )
   }
 }

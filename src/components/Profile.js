@@ -12,10 +12,10 @@ class Profile extends Component {
         <textarea
           id="profile"
           name="profile"
-          minlength="32"
+          minLength="32"
           rows="10"
           cols="50"
-          maxlength="320"
+          maxLength="320"
           placeholder="profile"
         >
         </textarea>
