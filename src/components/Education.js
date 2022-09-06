@@ -10,11 +10,12 @@ class Education extends Component {
       <div>
         <h1>Education</h1>
         <div className="education">
-          <div className="date">
+        <div className="date">
             <input type="date" id="startDate" name="startDate"></input>
+            <p>to</p>
             <input type="date" id="endDate" name="endDate"></input>
           </div>
-          <input type="text" id="title" name="title" placeholder="education title"></input>
+          <input type="text" id="title" name="title" placeholder="education"></input>
         </div>
       </div>
     )

@@ -1,21 +1,31 @@
+.App {
+  margin:3rem;
+  font-size: 16px;
+}
+
 form {
+  width:60%;
+  min-width: fit-content;
   margin: auto;
   background-color: white;
-  width: 70vw;
-  border: 4px black solid;
+  border: 1px white solid;
+}
+
+label {
+  font-size: 14px;
+  color:rgb(50, 50, 50);
 }
 
 .main {
   display: flex;
-  margin: 1vw;
+  margin: 24px;
   flex-direction: column;
   justify-content: flex-start;
   gap: 16px;
-  border: red solid;
+  border: dashed gray;
 }
 
-
-h1 {
+h1, h3 {
   margin: 10px;
   font-size: 24px;
   font-weight: 500;
@@ -27,37 +37,59 @@ h1 {
 }
 
 .side {
+  margin: 24px;
+  margin-right: auto;
   background-color: white;
-  border: solid blue
+  border: dashed gray;
+}
+.side > * {
+  margin-bottom: 64px;
 }
 
-.Personal {
-  border: solid orange;
+.main {
+  width: 100%;
 }
 
-textarea {
+.textarea {
   display: block;
+  padding: 10px;
 }
 
-input {
-  width: 250px;
-  min-width: 100px;
-  height: 28px;
-  border: 1px solid rgb(224, 224, 224);
-  border-radius: 4px;
+textarea{
+  display: block;
+  width: 100%;
+  padding:10px;
+  resize: none;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  border-radius: 6px;
+  background-color: whitesmoke;
+}
+textarea:focus {
+  outline: 1px gray solid;
 }
 
 input:focus {
-  border-color: rgb(116, 116, 255);
-  outline: none;
+  outline: 1px gray solid;
+}
+input[type=date] {
+  background:none;
+}
+input {
+  display: block;
+  width: 230px;
+  min-width: fit-content;
+  margin: 10px;
+  padding: 10px;
+  color: black;
+  border: none;
+  border-radius: 6px;
+  background-color: whitesmoke;
 }
 
-input, textarea {
-  display: block;
-  margin: 10px;
-  background: none;
-  color: black;
-  border: solid black;
+.date {
+  display: flex;
 }
 
 button {
@@ -73,9 +105,4 @@ button {
   padding: 8px 8px;
   border-radius: 5px;
   box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.5);
-}
-
-label {
-  font-size: 14px;
-  color:rgb(50, 50, 50);
 }

@@ -1,0 +1,59 @@
+.Personal {
+  margin: 24px;
+  margin-bottom: auto;
+  display: flex;
+  flex-direction: row;
+  background-color:bisque;
+}
+.Personal input {
+  background: none;
+}
+input:focus {
+  background-color: whitesmoke;
+  outline: 1px black solid;
+}
+input:hover {
+  background-color: whitesmoke;
+  outline: 1px gray solid;
+}
+
+.headline input:first-child{
+  font-size: 30px;
+  font-weight: 800;
+  margin-bottom: 0px;
+}
+.headline input:last-child{
+  font-size: 21px;
+  font-weight: 500;
+  width: 360px;
+  min-width: fit-content;
+  margin-top: 4px;
+}
+
+.details input{
+  width: 360px;
+  min-width: fit-content;
+  margin-top: 2px;
+}
+
+.photo {
+  display: flex;
+  background-color: purple;
+  margin: 0px;
+  margin-right: 48px;
+  height: 32vh;
+  width: 32vh;
+}
+.photo > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  color: white;
+}
+
+.headline {
+  margin-bottom: 1rem;
+}

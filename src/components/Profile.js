@@ -9,16 +9,17 @@ class Profile extends Component {
     return (
       <div>
         <h1>Profile</h1>
+        <div className="textarea">
         <textarea
           id="profile"
           name="profile"
           minLength="32"
-          rows="10"
-          cols="50"
+          rows="6"
           maxLength="320"
           placeholder="profile"
         >
         </textarea>
+        </div>
       </div>
     )
   }
