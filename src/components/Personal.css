@@ -2,6 +2,7 @@
   margin: 24px;
   margin-bottom: auto;
   display: flex;
+  align-items: center;
   flex-direction: row;
   background-color:bisque;
 }
@@ -15,6 +16,14 @@ input:focus {
 input:hover {
   background-color: whitesmoke;
   outline: 1px gray solid;
+}
+button{
+  align-self: flex-end;
+}
+
+.main > div, .side div {
+  display: flex;
+  flex-direction: column;
 }
 
 .headline input:first-child{

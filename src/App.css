@@ -93,16 +93,16 @@ input {
 }
 
 button {
-  width: fit-content;
+  margin-right: 0px;
   height: auto;
   text-align: center;
-  font-size: 16px;
-  font-weight: 800;
-  background-color: rgb(255, 47, 47);
-  border-color: rgb(255, 47, 47);
-  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: whitesmoke;
+  border-color: gray;
+  color: black;
   border:none;
   padding: 8px 8px;
-  border-radius: 5px;
-  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.3);
 }
