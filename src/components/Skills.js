@@ -17,7 +17,7 @@ class Skills extends Component {
   }
   render() {
     return (
-      <ul>
+      <div>
         {
           this.state.skills.map(skill => (
             <div key={skill.id}>
@@ -29,11 +29,10 @@ class Skills extends Component {
                 placeholder="skill"
                 onChange={(e) => this.handleChange(e)}
               ></input>
-              <button type="button" onClick={() => this.props.handleEdit("skills", this.state)}>Save</button>
             </div>
           ))
         }
-      </ul>
+      </div>
     )
   }
 }

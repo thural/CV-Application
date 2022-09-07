@@ -38,7 +38,6 @@ class Education extends Component {
                 </div>
                 <input type="text" id="title" name="title" placeholder="education" onChange={(e) => this.handleChange(e)}></input>
               </div>
-              <button type="button" onClick={() => this.props.handleEdit("education", this.state)}>Save</button>
             </div>
           ))
         }

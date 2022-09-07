@@ -26,10 +26,6 @@ class Profile extends Component {
             onChange={(e) => this.handleChange(e)}
           ></textarea>
         </div>
-        <button
-          type="button"
-          onClick={() => this.props.handleEdit("profile", this.state)}
-        >Save</button>
       </div>
     )
   }

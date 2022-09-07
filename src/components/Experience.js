@@ -55,7 +55,6 @@ class Experience extends Component {
                   </textarea>
                 </div>
               </div>
-              <button type="button" onClick={() => this.props.handleEdit("experience", this.state)}>Save</button>
             </div>
           ))
         }

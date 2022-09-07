@@ -6,34 +6,39 @@ class Languages extends Component {
   state = {
     languages: [
       { language: "", id: uniqid() }
-    ],
-    language: { language: "", id: uniqid() }
+    ]
   }
   handleChange(e) {
-    this.setState({
-      language: { [e.target.id]: e.target.value }
-    });
+    const id = e.target.key;
+    const value = e.target.value;
+    this.setState(state.languages.map(language => {
+      if (language.id == id) {
+        language.language = value
+        return language
+      } else return language
+    }
+    ));
     console.log(this.state)
   }
   render() {
     return (
-      <ul>
+      <div>
         {
           this.state.languages.map(language => (
-            <div key={language.id}>
+            <div>
               <h4>Languages</h4>
               <input
+                key={language.id}
                 type="input"
                 id="language"
                 name="language"
                 placeholder="language"
                 onChange={(e) => this.handleChange(e)}
               ></input>
-              <button type="button" onClick={() => this.props.handleEdit("skills", this.state)}>Save</button>
             </div>
           ))
         }
-      </ul>
+      </div>
     )
   }
 }
