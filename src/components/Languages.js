@@ -1,14 +1,10 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import uniqid from "uniqid";
 
-class Languages extends Component {
+const Languages = () => {
+  const [languages, setLanguage] = useState([{ language: "English", id: uniqid() }])
 
-  state = {
-    languages: [
-      { language: "", id: uniqid() }
-    ]
-  }
-  handleChange(e) {
+  const handleChange = (e) => {
     const id = e.target.key;
     const value = e.target.value;
     this.setState(state.languages.map(language => {
@@ -20,27 +16,25 @@ class Languages extends Component {
     ));
     console.log(this.state)
   }
-  render() {
-    return (
-      <div>
-        {
-          this.state.languages.map(language => (
-            <div>
-              <h4>Languages</h4>
-              <input
-                key={language.id}
-                type="input"
-                id="language"
-                name="language"
-                placeholder="language"
-                onChange={(e) => this.handleChange(e)}
-              ></input>
-            </div>
-          ))
-        }
-      </div>
-    )
-  }
+  return (
+    <div>
+      {
+        languages.map(language => (
+          <div key={language.key}>
+            <h4>Languages</h4>
+            <input
+              type="input"
+              id="language"
+              name="language"
+              placeholder="language"
+              onChange={(e) => handleChange(e)}
+            >
+            </input>
+          </div>
+        ))
+      }
+    </div>
+  )
 }
 
 export default Languages

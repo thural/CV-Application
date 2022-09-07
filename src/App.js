@@ -34,7 +34,7 @@ class App extends Component {
           <div className="content">
             <div className="side">
               <Skills handleEdit={this.handleEdit} />
-              <Languages handleEdit={this.handleEdit} />
+              {/*<Languages handleEdit={this.handleEdit} />*/}
             </div>
             <div className="main">
               <Profile handleEdit={this.handleEdit} />

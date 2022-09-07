@@ -1,34 +1,29 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
-class Profile extends Component {
-  state = {
-    profile: ""
+const Profile = () => {
+  const [profile, setProfile] = useState("")
+
+  const handleChange = (e) => {
+    setProfile(e.target.value);
+    console.log(profile)
   }
 
-  handleChange(e) {
-    this.setState({
-      [e.target.id]: e.target.value
-    });
-    console.log(this.state)
-  }
-  render() {
-    return (
-      <div>
-        <h1>Profile</h1>
-        <div className="textarea">
-          <textarea
-            id="profile"
-            name="profile"
-            minLength="32"
-            rows="6"
-            maxLength="320"
-            placeholder="profile"
-            onChange={(e) => this.handleChange(e)}
-          ></textarea>
-        </div>
+  return (
+    <div>
+      <h1>Profile</h1>
+      <div className="textarea">
+        <textarea
+          id="profile"
+          name="profile"
+          minLength="32"
+          rows="6"
+          maxLength="320"
+          placeholder="profile"
+          onChange={(e) => handleChange(e)}
+        ></textarea>
       </div>
-    )
-  }
+    </div>
+  )
 };
 
 export default Profile

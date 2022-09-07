@@ -1,39 +1,64 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import uniqid from "uniqid";
 
-class Skills extends Component {
+const Skills = () => {
+  const [skills, setSkills] = useState({
 
-  state = {
-    skills: [
-      { skill: "", id: uniqid() }
+    all: [
+      {
+        skill: "",
+        id: uniqid(),
+        visible: false
+      }
     ],
-    skill: { skill: "", id: uniqid() }
-  }
-  handleChange(e) {
-    this.setState({
-      skill: {[e.target.id]: e.target.value}
-    });
-    console.log(this.state)
-  }
-  render() {
-    return (
-      <div>
-        {
-          this.state.skills.map(skill => (
-            <div key={skill.id}>
-              <h3>Skills</h3>
-              <input
-                type="input"
-                id="skill"
-                name="skill"
-                placeholder="skill"
-                onChange={(e) => this.handleChange(e)}
-              ></input>
-            </div>
-          ))
-        }
-      </div>
-    )
-  }
+
+    current: {
+      skill: "",
+      id: uniqid(),
+      visible: false
+    }
+    
+  });
+
+  const handleChange = (e) => {
+    setSkills({
+      current: {
+        skill: e.target.value
+      }
+    })
+  };
+
+  const showForm = () => {
+    setSkills({ current: { visible: true } })
+  };
+
+  const addSkill = () => {
+    setSkills({ all: all.concat(current) })
+  };
+
+
+  return (
+    <div>
+      {
+        skills.all.map(skill => (
+
+          <form key={skill.id}>
+            <h3>Skills</h3>
+            <input
+              type="input"
+              id="skill"
+              name="skill"
+              placeholder="skill"
+              onChange={(e) => handleChange(e)}
+            >
+            </input>
+            <button type="submit" onClick={addSkill()}>save</button>
+          </form>
+
+        ))
+      }
+      {!skills.current.visible && <button onClick={showForm()}>add</button>}
+    </div>
+  )
 }
 export default Skills
