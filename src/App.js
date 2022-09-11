@@ -19,27 +19,23 @@ class App extends Component {
       languages: []
     }
   }
-  handleEdit = (keyName, localState) => {
-    //e.target.preventDefault()
-    if(keyName == "personal" || keyName == "profile"){
-      this.setState({[keyName]:localState}) 
-    } else this.setState({[keyName]:this.state[keyName].concat(localState)})
-    console.log(this.state)
-  }
+
   render() {
     return (
       <div className="App">
         <form>
-          <Personal handleEdit={this.handleEdit} />
+          <Personal />
           <div className="content">
             <div className="side">
-              <Skills handleEdit={this.handleEdit} />
-              {/*<Languages handleEdit={this.handleEdit} />*/}
+              {/*<Skills />
+              <Languages />*/}
             </div>
             <div className="main">
-              <Profile handleEdit={this.handleEdit} />
-              <Experience handleEdit={this.handleEdit} />
-              <Education handleEdit={this.handleEdit} />
+              {/*
+              <Profile />
+              <Experience />
+              <Education />
+              */}
             </div>
           </div>
         </form>

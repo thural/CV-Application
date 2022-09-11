@@ -2,12 +2,9 @@ import React, { useReducer } from "react";
 import uniqid from "uniqid";
 
 function listReducer(state, action) {
-
   switch (action.type) {
     case 'add':
-      const update = [...state];
-      update.push(action.skill);
-      return update;
+      return [...state, action.skill];
     case 'edit':
       return state.map(skill => {
         if (skill.id == action.id) {
@@ -19,6 +16,7 @@ function listReducer(state, action) {
       return state.map(skill => {
         if (skill.id == action.id) {
           skill.value = action.value
+          skill.readOnly = false
           return skill
         } else return skill
       });
@@ -32,9 +30,6 @@ function skillReducer(state, skillName) {
   update.value = skillName;
   return update
 };
-
-
-///////////////////////////////////////////////////////////////
 
 const Skills = () => {
 
@@ -56,21 +51,24 @@ const Skills = () => {
     }
   );
 
-  const add = () => {
+  const add = (skill) => {
     setList({ skill, type: "add" })
   };
-
+  
   const edit = (id) => {
     setList({ id, type: "edit" })
   };
-
-  const save = (id, value) => {
+  
+  const save = (e, id) => {
+    const value =  e.target.value;
     setList({ id, type: "save", value })
   };
-
+  
   const handleChange = (e) => {
+    e.preventDefault();
     setSkill(e.target.value)
   };
+
 
 
   return (
@@ -89,8 +87,8 @@ const Skills = () => {
               readOnly={skill.readOnly}
             >
             </input>
-            {skill.readOnly && <button type="submit" onClick={edit(skill.id)}>edit</button>}
-            {!skill.readOnly && <button type="submit" onClick={(e) => save(skill.id, e.target.value)}>save</button>}
+            {skill.readOnly && <button type="button" onClick={edit(skill.id)}>edit</button>}
+            {!skill.readOnly && <button type="button" onClick={(e) => save(e, skill.id)}>save</button>}
           </form>
 
         ))}
@@ -104,7 +102,7 @@ const Skills = () => {
           onChange={(e) => handleChange(e)}
         >
         </input>
-        <button type="submit" onClick={add()}>add</button>
+        <button type="submit" onClick={add(skill)}>add</button>
       </form>
 
     </div>
