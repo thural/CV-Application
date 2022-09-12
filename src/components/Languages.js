@@ -57,7 +57,7 @@ const Languages = () => {
     <div>
       {
         list.map(language => (
-          <div key={language.key}>
+          <div key={language.id}>
             <h4>Languages</h4>
             <input
               type="input"
