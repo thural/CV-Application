@@ -42,9 +42,6 @@ h1, h3 {
   background-color: white;
   border: dashed gray;
 }
-.side > * {
-  margin-bottom: 64px;
-}
 
 .main {
   width: 100%;

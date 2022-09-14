@@ -14,7 +14,7 @@ function listReducer(state, { type, id, form, value }) {
 
     case 'save':
       return state.map(listItem => {
-        if (listItem.id == id) return { ...listItem, value, readOnly: false }
+        if (listItem.id == id) return { ...listItem, value, readOnly: true }
         else return listItem
       });
 
@@ -54,6 +54,7 @@ const Skills = () => {
 
   const add = (e) => {
     e.preventDefault();
+    form.readOnly = true;
     setList({ form, type: "add" });
     form.id = uniqid();
   };
@@ -62,10 +63,8 @@ const Skills = () => {
     setList({ id, type: "edit" })
   };
 
-
-
   const save = (event, id) => {
-    const [name, value] = event.target;
+    const value = event.target.value;
     setList({ id, type: "save", value })
   };
 
@@ -79,15 +78,13 @@ const Skills = () => {
           <div key={id}>
             <input
               type="input"
-              id="skill"
               name="skill"
-              value={value}
               placeholder="skill"
-              onChange={(e) => null}
+              defaultValue={value}
+              readOnly={readOnly}
             ></input>
-            <button>Test Button</button>
-            {readOnly && <button type="button" onClick={edit(id)}>edit</button>}
-            {readOnly && <button type="button" onClick={(e) => save(e, id)}>save</button>}
+            {readOnly && <button type="button" onClick={e => edit(id)}>edit</button>}
+            {!readOnly && <button type="button" onClick={e => save(e, id)}>save</button>}
           </div>
         ))
       }
@@ -96,7 +93,6 @@ const Skills = () => {
       <form key={form.id}>
         <input
           type="input"
-          id="skill"
           name="skill"
           placeholder="skill"
           onChange={(e) => handleChange(e)}

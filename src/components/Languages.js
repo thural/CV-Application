@@ -1,94 +1,105 @@
 import React, { useReducer } from "react";
 import uniqid from "uniqid";
 
-function listReducer(state, action) {
-  switch (action.type) {
+function listReducer(state, { type, id, form, value }) {
+  switch (type) {
     case 'add':
-      return [...state, action.language];
+      return [...state, form];
+
     case 'edit':
-      return state.map(language => {
-        if (language.id == action.id) {
-          language.readOnly = false
-          return language
-        } else return language
+      return state.map(listItem => {
+        if (listItem.id == id) return { ...listItem, readOnly: false }
+        else return listItem
       });
+
     case 'save':
-      return state.map(language => {
-        if (language.id == action.id) {
-          language.value = action.value
-          language.readOnly = false
-          return language
-        } else return language
+      return state.map(listItem => {
+        if (listItem.id == id) return { ...listItem, value, readOnly: true }
+        else return listItem
       });
-    default:
-      return state
+
+    default: return state
   }
 };
 
-function languageReducer(state, event) {
-  return {
-    ...state, [event.name]: event.value
-  }
+function formReducer(state, { name, value }) {
+  return { ...state, name, value }
 };
 
 const Languages = () => {
-  const [list, setList] = useReducer(listReducer, [{ value: "English", id: uniqid(), readOnly: true }]);
-  const [language, setLanguage] = useReducer(languageReducer, { value: "", id: uniqid(), readOnly: false });
+  
+  const [list, setList] = useReducer(listReducer,
+    [
+      {
+        name: "lang",
+        value: "English",
+        id: uniqid(),
+        readOnly: true,
+      },
+    ]
+  );
 
-  const add = (language) => {
-    setList({ language, type: "add" })
+  const [form, setForm] = useReducer(formReducer,
+    {
+      name: "",
+      value: "",
+      id: uniqid(),
+      readOnly: false,
+    }
+  );
+
+  const handleChange = (event) => {
+    setForm(event.target)
+  };
+
+  const add = (e) => {
+    e.preventDefault();
+    form.readOnly = true;
+    setList({ form, type: "add" });
+    form.id = uniqid();
   };
 
   const edit = (id) => {
     setList({ id, type: "edit" })
   };
 
-  const save = (e, id) => {
-    const value = e.target.value;
+  const save = (event, id) => {
+    const value = event.target.value;
     setList({ id, type: "save", value })
   };
 
-  const handleChange = (e) => {
-    e.preventDefault();
-    setLanguage({
-      name: e.target.name,
-      value:e.target.value
-    })
-  };
-
   return (
-    <div>
+    <>
+      <h3>Languages</h3>
+
       {
-        list.map(language => (
-          <div key={language.id}>
-            <h4>Languages</h4>
+        list.map(({ id, readOnly, value }) => (
+          <div key={id}>
             <input
               type="input"
-              id="language"
-              name="language"
+              name="lang"
               placeholder="language"
-              onChange={(e) => handleChange(e)}
-            >
-            </input>
-            {language.readOnly && <button type="button" onClick={edit(language.id)}>edit</button>}
-            {!language.readOnly && <button type="button" onClick={(e) => save(e, language.id)}>save</button>}
+              defaultValue={value}
+              readOnly={readOnly}
+            ></input>
+            {readOnly && <button type="button" onClick={e => edit(id)}>edit</button>}
+            {!readOnly && <button type="button" onClick={e => save(e, id)}>save</button>}
           </div>
         ))
       }
 
-      <form key={language.id}>
+
+      <form key={form.id}>
         <input
           type="input"
-          id="language"
-          name="language"
+          name="lang"
           placeholder="language"
           onChange={(e) => handleChange(e)}
-        >
-        </input>
-        <button type="submit" onClick={add(language)}>add</button>
+        ></input>
+        <button type="submit" onClick={e => add(e)}>add</button>
       </form>
 
-    </div>
+    </>
   )
 }
 
