@@ -25,10 +25,10 @@ function listReducer(state, action) {
   }
 };
 
-function languageReducer(state, languageName) {
-  const update = { ...state };
-  update.value = languageName;
-  return update
+function languageReducer(state, event) {
+  return {
+    ...state, [event.name]: event.value
+  }
 };
 
 const Languages = () => {
@@ -50,7 +50,10 @@ const Languages = () => {
 
   const handleChange = (e) => {
     e.preventDefault();
-    setLanguage(e.target.value)
+    setLanguage({
+      name: e.target.name,
+      value:e.target.value
+    })
   };
 
   return (

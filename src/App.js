@@ -23,22 +23,21 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <form>
-          <Personal />
-          <div className="content">
-            <div className="side">
-              {/*<Skills />
+        <Personal />
+        <div className="content">
+          <div className="side">
+            <Skills />
+            {/*}
               <Languages />*/}
-            </div>
-            <div className="main">
-              {/*
+          </div>
+          <div className="main">
+            {/*
               <Profile />
               <Experience />
               <Education />
               */}
-            </div>
           </div>
-        </form>
+        </div>
       </div>)
   }
 };

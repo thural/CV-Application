@@ -1,34 +1,29 @@
 import React, { useReducer } from "react";
 import uniqid from "uniqid";
 
-function listReducer(state, action) {
-  switch (action.type) {
+function listReducer(state, { type, id, form, value }) {
+  switch (type) {
     case 'add':
-      return [...state, action.skill];
+      return [...state, form];
+
     case 'edit':
-      return state.map(skill => {
-        if (skill.id == action.id) {
-          skill.readOnly = false
-          return skill
-        } else return skill
+      return state.map(listItem => {
+        if (listItem.id == id) return { ...listItem, readOnly: false }
+        else return listItem
       });
+
     case 'save':
-      return state.map(skill => {
-        if (skill.id == action.id) {
-          skill.value = action.value
-          skill.readOnly = false
-          return skill
-        } else return skill
+      return state.map(listItem => {
+        if (listItem.id == id) return { ...listItem, value, readOnly: false }
+        else return listItem
       });
-    default:
-      return state
+
+    default: return state
   }
 };
 
-function skillReducer(state, skillName) {
-  const update = { ...state };
-  update.value = skillName;
-  return update
+function formReducer(state, { name, value }) {
+  return { ...state, name, value }
 };
 
 const Skills = () => {
@@ -36,6 +31,7 @@ const Skills = () => {
   const [list, setList] = useReducer(listReducer,
     [
       {
+        name: "skill",
         value: "Javascript",
         id: uniqid(),
         readOnly: true,
@@ -43,69 +39,72 @@ const Skills = () => {
     ]
   );
 
-  const [skill, setSkill] = useReducer(skillReducer,
+  const [form, setForm] = useReducer(formReducer,
     {
+      name: "",
       value: "",
       id: uniqid(),
-      readOnly: true,
+      readOnly: false,
     }
   );
 
-  const add = (skill) => {
-    setList({ skill, type: "add" })
+  const handleChange = (event) => {
+    setForm(event.target)
   };
-  
+
+  const add = (e) => {
+    e.preventDefault();
+    setList({ form, type: "add" });
+    form.id = uniqid();
+  };
+
   const edit = (id) => {
     setList({ id, type: "edit" })
   };
-  
-  const save = (e, id) => {
-    const value =  e.target.value;
+
+
+
+  const save = (event, id) => {
+    const [name, value] = event.target;
     setList({ id, type: "save", value })
   };
-  
-  const handleChange = (e) => {
-    e.preventDefault();
-    setSkill(e.target.value)
-  };
-
 
 
   return (
-    <div>
+    <>
       <h3>Skills</h3>
 
       {
-        list.map(skill => (
-
-          <form key={skill.id}>
+        list.map(({ id, readOnly, value }) => (
+          <div key={id}>
             <input
               type="input"
               id="skill"
               name="skill"
+              value={value}
               placeholder="skill"
-              readOnly={skill.readOnly}
-            >
-            </input>
-            {skill.readOnly && <button type="button" onClick={edit(skill.id)}>edit</button>}
-            {!skill.readOnly && <button type="button" onClick={(e) => save(e, skill.id)}>save</button>}
-          </form>
+              onChange={(e) => null}
+            ></input>
+            <button>Test Button</button>
+            {readOnly && <button type="button" onClick={edit(id)}>edit</button>}
+            {readOnly && <button type="button" onClick={(e) => save(e, id)}>save</button>}
+          </div>
+        ))
+      }
 
-        ))}
 
-      <form key={skill.id}>
+      <form key={form.id}>
         <input
           type="input"
           id="skill"
           name="skill"
           placeholder="skill"
           onChange={(e) => handleChange(e)}
-        >
-        </input>
-        <button type="submit" onClick={add(skill)}>add</button>
+        ></input>
+        <button type="submit" onClick={e => add(e)}>add</button>
       </form>
 
-    </div>
+    </>
   )
 };
 
