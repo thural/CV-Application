@@ -1,34 +1,35 @@
-import React, { useReducer, useState } from "react";
+import React, { useReducer } from "react";
 import uniqid from "uniqid";
 
-function listReducer(state, action) {
-  switch (action.type) {
+function listReducer(state, { type, id, form, values }) {
+  switch (type) {
     case 'add':
-      return [...state, action.job];
+      return [...state, form];
+
     case 'edit':
-      return state.map(job => {
-        if (job.id == action.id) {
-          job.readOnly = false
-          return job
-        } else return job
+      return state.map(listItem => {
+        if (listItem.id == id) return { ...listItem, readOnly: false }
+        else return listItem
       });
+
     case 'save':
-      return state.map(job => {
-        if (job.id == action.id) {
-          job.value = action.value
-          job.readOnly = false
-          return job
-        } else return job
+      return state.map(listItem => {
+        if (listItem.id == id) return { ...listItem, ...values, readOnly: true } // ToDo: replace values with all form keys
+        else return listItem
       });
-    default:
-      return state
+
+    default: return state
   }
+};
+
+function formReducer(state, { name, value }) {
+  return { ...state, [name]: value }
 };
 
 const Experience = () => {
 
   const [list, setList] = useReducer(listReducer,
-    {
+    [{
       startDate: null,
       endDate: null,
       title: "Network Engineer",
@@ -36,9 +37,10 @@ const Experience = () => {
       id: uniqid(),
       readOnly: true
     },
+    ]
   );
 
-  const [job, setJob] = useState(
+  const [form, setForm] = useReducer(formReducer,
     {
       startDate: null,
       endDate: null,
@@ -47,25 +49,33 @@ const Experience = () => {
       id: uniqid(),
       readOnly: false
     }
-  )
+  );
 
-  const add = (job) => {
-    setList({ job, type: "add" })
+  const handleChange = (event) => {
+    setForm(event.target)
   };
-  
+
+  const add = (e) => {
+    e.preventDefault();
+    form.readOnly = true;
+    setList({ form, type: "add" });
+    form.id = uniqid();
+  };
+
   const edit = (id) => {
     setList({ id, type: "edit" })
   };
-  
+
   const save = (e, id) => {
-    const value =  e.target.value;
-    setList({ id, type: "save", value })
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const values = {};
+    for (let [key, value] of formData) { values[key] = value };
+    setList({ id, type: "save", values });
   };
 
-  const handleChange = (e) => {
-    setJob({ [e.target.id]: e.target.value });
-    console.log(list)
-  };
+
+
 
   return (
     <div>
@@ -74,31 +84,50 @@ const Experience = () => {
       {
         list.map(job => (
 
-            <div className="job" key={job.id}>
-              <div className="date">
-                <input type="date" id="startDate" name="startDate" onChange={(e) => handleChange(e)}></input>
-                <p>to</p>
-                <input type="date" id="endDate" name="endDate" onChange={(e) => handleChange(e)}></input>
-              </div>
-              <input type="text" id="title" name="title" placeholder="job title" onChange={(e) => handleChange(e)}></input>
-              <div className="textarea">
-                <textarea id="description" name="description"
-                  minLength="32"
-                  rows="6"
-                  maxLength="320"
-                  placeholder="experience"
-                  onChange={(e) => this.handleChange(e)}
-                >
-                </textarea>
-              </div>
-              {skill.readOnly && <button type="button" onClick={edit(skill.id)}>edit</button>}
-              {!skill.readOnly && <button type="button" onClick={(e) => save(e, skill.id)}>save</button>}
+          <form className="job" key={job.id} onSubmit={(e) => save(e, job.id)}>
+            <div className="date">
+              <input type="date"
+                id="startDate"
+                name="startDate"
+                defaultValue={job.startDate}
+                readOnly={job.readOnly}
+              >
+              </input>
+              <p>to</p>
+              <input
+                type="date"
+                id="endDate"
+                name="endDate"
+                defaultValue={job.endDate}
+                readOnly={job.readOnly}
+              >
+              </input>
             </div>
+            <input type="text"
+              id="title"
+              name="title"
+              defaultValue={job.title}
+              readOnly={job.readOnly}
+              placeholder="job title"
+            >
+            </input>
+            <div className="textarea">
+              <textarea id="description" name="description"
+                minLength="32"
+                rows="6"
+                maxLength="320"
+                placeholder="experience"
+                defaultValue={job.description}
+                readOnly={job.readOnly}>
+              </textarea>
+            </div>
+            {job.readOnly && <button type="button" onClick={(e) => edit(job.id)}>edit</button>}
+            {!job.readOnly && <button type="submit">save</button>}
+          </form>
 
-        ))
-      }
+        ))}
 
-      <form key={job.id}>
+      <form>
         <div className="job">
           <div className="date">
             <input type="date" id="startDate" name="startDate" onChange={(e) => handleChange(e)}></input>
@@ -117,7 +146,7 @@ const Experience = () => {
             </textarea>
           </div>
         </div>
-        <button type="submit" onClick={add(skill)}>add</button>
+        <button type="submit" onClick={(e) => add(e)}>add</button>
       </form>
     </div>
   )

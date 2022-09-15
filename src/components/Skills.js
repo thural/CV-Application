@@ -83,8 +83,8 @@ const Skills = () => {
               defaultValue={value}
               readOnly={readOnly}
             ></input>
-            {readOnly && <button type="button" onClick={e => edit(id)}>edit</button>}
-            {!readOnly && <button type="button" onClick={e => save(e, id)}>save</button>}
+            {readOnly && <button type="button" onClick={(e) => edit(id)}>edit</button>}
+            {!readOnly && <button type="button" onClick={(e) => save(e, id)}>save</button>}
           </div>
         ))
       }

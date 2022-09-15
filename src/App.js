@@ -30,9 +30,11 @@ class App extends Component {
             <Languages />
           </div>
           <div className="main">
-            {/*
-              <Profile />
+            
+              
               <Experience />
+              {/*
+              <Profile />
               <Education />
               */}
           </div>
