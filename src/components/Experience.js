@@ -60,6 +60,7 @@ const Experience = () => {
     form.readOnly = true;
     setList({ form, type: "add" });
     form.id = uniqid();
+    e.target.reset()
   };
 
   const edit = (id) => {
@@ -78,7 +79,7 @@ const Experience = () => {
 
 
   return (
-    <div>
+    <>
       <h1>Experience</h1>
 
       {
@@ -91,6 +92,7 @@ const Experience = () => {
                 name="startDate"
                 defaultValue={job.startDate}
                 readOnly={job.readOnly}
+                required
               >
               </input>
               <p>to</p>
@@ -100,6 +102,7 @@ const Experience = () => {
                 name="endDate"
                 defaultValue={job.endDate}
                 readOnly={job.readOnly}
+                required
               >
               </input>
             </div>
@@ -109,6 +112,7 @@ const Experience = () => {
               defaultValue={job.title}
               readOnly={job.readOnly}
               placeholder="job title"
+              required
             >
             </input>
             <div className="textarea">
@@ -118,7 +122,9 @@ const Experience = () => {
                 maxLength="320"
                 placeholder="experience"
                 defaultValue={job.description}
-                readOnly={job.readOnly}>
+                readOnly={job.readOnly}
+                required
+                >
               </textarea>
             </div>
             {job.readOnly && <button type="button" onClick={(e) => edit(job.id)}>edit</button>}
@@ -127,28 +133,32 @@ const Experience = () => {
 
         ))}
 
-      <form>
-        <div className="job">
-          <div className="date">
-            <input type="date" id="startDate" name="startDate" onChange={(e) => handleChange(e)}></input>
-            <p>to</p>
-            <input type="date" id="endDate" name="endDate" onChange={(e) => handleChange(e)}></input>
-          </div>
-          <input type="text" id="title" name="title" placeholder="job title" onChange={(e) => handleChange(e)}></input>
-          <div className="textarea">
-            <textarea id="description" name="description"
-              minLength="32"
-              rows="6"
-              maxLength="320"
-              placeholder="experience"
-              onChange={(e) => handleChange(e)}
-            >
-            </textarea>
-          </div>
+      <form className="job" onSubmit={add}>
+
+        <div className="date">
+          <input type="date" id="startDate" name="startDate" required onChange={(e) => handleChange(e)}></input>
+          <p>to</p>
+          <input type="date" id="endDate" name="endDate" required onChange={(e) => handleChange(e)}></input>
         </div>
-        <button type="submit" onClick={(e) => add(e)}>add</button>
+
+        <input type="text" id="title" name="title" required placeholder="job title" onChange={(e) => handleChange(e)}></input>
+        
+        <div className="textarea">
+          <textarea id="description" name="description"
+            minLength="32"
+            rows="6"
+            maxLength="320"
+            placeholder="experience"
+            required
+            onChange={(e) => handleChange(e)}
+          >
+          </textarea>
+        </div>
+
+        <button type="submit" >add</button>
       </form>
-    </div>
+
+    </>
   )
 };
 
