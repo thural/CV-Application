@@ -28,17 +28,7 @@ function formReducer(state, { name, value }) {
 
 const Education = () => {
 
-  const [list, setList] = useReducer(listReducer,
-    [{
-      startDate: null,
-      endDate: null,
-      title: "Electronics Engineering",
-      description: "studied this .. studied that...",
-      id: uniqid(),
-      readOnly: true
-    },
-    ]
-  );
+  const [list, setList] = useReducer(listReducer, []);
 
   const [form, setForm] = useReducer(formReducer,
     {
@@ -74,9 +64,6 @@ const Education = () => {
     for (let [key, value] of formData) { values[key] = value };
     setList({ id, type: "save", values });
   };
-
-
-
 
   return (
     <>
@@ -134,20 +121,40 @@ const Education = () => {
 
       <form className="school" onSubmit={add}>
         <div className="date">
-          <input type="date" id="startDate" name="startDate" required onChange={(e) => handleChange(e)}></input>
+          <input
+            type="date"
+            id="startDate"
+            name="startDate"
+            required
+            onChange={(e) => handleChange(e)}>
+          </input>
           <p>to</p>
-          <input type="date" id="endDate" name="endDate" required onChange={(e) => handleChange(e)}></input>
+          <input
+            type="date"
+            id="endDate"
+            name="endDate"
+            required
+            onChange={(e) => handleChange(e)}>
+          </input>
         </div>
-        <input type="text" id="title" name="title" placeholder="job title" required onChange={(e) => handleChange(e)}></input>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          placeholder="job title"
+          required
+          onChange={(e) => handleChange(e)}>
+        </input>
         <div className="textarea">
-          <textarea id="description" name="description"
+          <textarea
+            id="description"
+            name="description"
             minLength="32"
             rows="6"
             maxLength="320"
             placeholder="education"
             onChange={(e) => handleChange(e)}
-            required
-          >
+            required>
           </textarea>
         </div>
         <button type="submit" >add</button>

@@ -14,7 +14,7 @@ function listReducer(state, { type, id, form, values }) {
 
     case 'save':
       return state.map(listItem => {
-        if (listItem.id == id) return { ...listItem, ...values, readOnly: true } // ToDo: replace values with all form keys
+        if (listItem.id == id) return { ...listItem, ...values, readOnly: true }
         else return listItem
       });
 
@@ -28,17 +28,7 @@ function formReducer(state, { name, value }) {
 
 const Experience = () => {
 
-  const [list, setList] = useReducer(listReducer,
-    [{
-      startDate: null,
-      endDate: null,
-      title: "Network Engineer",
-      description: "done this .. done that...",
-      id: uniqid(),
-      readOnly: true
-    },
-    ]
-  );
+  const [list, setList] = useReducer(listReducer,[]);
 
   const [form, setForm] = useReducer(formReducer,
     {
@@ -75,9 +65,6 @@ const Experience = () => {
     setList({ id, type: "save", values });
   };
 
-
-
-
   return (
     <>
       <h1>Experience</h1>
@@ -92,8 +79,7 @@ const Experience = () => {
                 name="startDate"
                 defaultValue={job.startDate}
                 readOnly={job.readOnly}
-                required
-              >
+                required>
               </input>
               <p>to</p>
               <input
@@ -102,8 +88,7 @@ const Experience = () => {
                 name="endDate"
                 defaultValue={job.endDate}
                 readOnly={job.readOnly}
-                required
-              >
+                required>
               </input>
             </div>
             <input type="text"
@@ -112,8 +97,7 @@ const Experience = () => {
               defaultValue={job.title}
               readOnly={job.readOnly}
               placeholder="job title"
-              required
-            >
+              required>
             </input>
             <div className="textarea">
               <textarea id="description" name="description"
@@ -123,8 +107,7 @@ const Experience = () => {
                 placeholder="experience"
                 defaultValue={job.description}
                 readOnly={job.readOnly}
-                required
-                >
+                required>
               </textarea>
             </div>
             {job.readOnly && <button type="button" onClick={(e) => edit(job.id)}>edit</button>}
@@ -136,9 +119,21 @@ const Experience = () => {
       <form className="job" onSubmit={add}>
 
         <div className="date">
-          <input type="date" id="startDate" name="startDate" required onChange={(e) => handleChange(e)}></input>
+          <input
+          type="date"
+          id="startDate"
+          name="startDate"
+          required
+          onChange={(e) => handleChange(e)}>
+          </input>
           <p>to</p>
-          <input type="date" id="endDate" name="endDate" required onChange={(e) => handleChange(e)}></input>
+          <input
+          type="date"
+          id="endDate"
+          name="endDate"
+          required
+          onChange={(e) => handleChange(e)}>
+          </input>
         </div>
 
         <input type="text" id="title" name="title" required placeholder="job title" onChange={(e) => handleChange(e)}></input>
@@ -150,8 +145,7 @@ const Experience = () => {
             maxLength="320"
             placeholder="experience"
             required
-            onChange={(e) => handleChange(e)}
-          >
+            onChange={(e) => handleChange(e)}>
           </textarea>
         </div>
 

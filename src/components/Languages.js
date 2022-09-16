@@ -27,17 +27,8 @@ function formReducer(state, { name, value }) {
 };
 
 const Languages = () => {
-  
-  const [list, setList] = useReducer(listReducer,
-    [
-      {
-        name: "lang",
-        value: "English",
-        id: uniqid(),
-        readOnly: true,
-      },
-    ]
-  );
+
+  const [list, setList] = useReducer(listReducer, []);
 
   const [form, setForm] = useReducer(formReducer,
     {
@@ -64,6 +55,7 @@ const Languages = () => {
   };
 
   const save = (event, id) => {
+    event.preventDefault();
     const value = event.target.value;
     setList({ id, type: "save", value })
   };
@@ -74,29 +66,30 @@ const Languages = () => {
 
       {
         list.map(({ id, readOnly, value }) => (
-          <div key={id}>
+          <form key={id} onSubmit={(e) => save(e, id)}>
             <input
               type="input"
               name="lang"
               placeholder="language"
               defaultValue={value}
               readOnly={readOnly}
+              required
             ></input>
             {readOnly && <button type="button" onClick={e => edit(id)}>edit</button>}
-            {!readOnly && <button type="button" onClick={e => save(e, id)}>save</button>}
-          </div>
+            {!readOnly && <button type="submit" >save</button>}
+          </form>
         ))
       }
 
-
-      <form key={form.id}>
+      <form key={form.id} onSubmit={add}>
         <input
           type="input"
           name="lang"
           placeholder="language"
+          required
           onChange={(e) => handleChange(e)}
         ></input>
-        <button type="submit" onClick={e => add(e)}>add</button>
+        <button type="submit" >add</button>
       </form>
 
     </>

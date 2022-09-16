@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import style from "./Personal.css"
+import "./Personal.css"
 
 const Personal = () => {
 
@@ -15,9 +15,8 @@ const Personal = () => {
     setDetails({
       [e.target.id]: e.target.value
     });
-    console.log(details)
   }
-  
+
   return (
     <div className="Personal">
       <div className="photo"><div><h1>add photo</h1></div></div>

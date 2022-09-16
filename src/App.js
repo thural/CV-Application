@@ -5,7 +5,7 @@ import Experience from "./components/Experience";
 import Education from "./components/Education";
 import Skills from "./components/Skills";
 import Languages from "./components/Languages";
-import style from "./App.css"
+import "./App.css"
 
 class App extends Component {
   constructor() {
@@ -30,11 +30,9 @@ class App extends Component {
             <Languages />
           </div>
           <div className="main">
-              {/*
-              <Profile />
-              */}
-              <Experience />
-              <Education />
+            <Profile />
+            <Experience />
+            <Education />
           </div>
         </div>
       </div>)

@@ -5,7 +5,6 @@ const Profile = () => {
 
   const handleChange = (e) => {
     setProfile(e.target.value);
-    console.log(profile)
   }
 
   return (
