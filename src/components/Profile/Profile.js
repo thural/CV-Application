@@ -8,7 +8,7 @@ const Profile = () => {
   }
 
   return (
-    <div>
+    <div className="Profile">
       <h1>Profile</h1>
       <div className="textarea">
         <textarea

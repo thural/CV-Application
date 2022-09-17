@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import Personal from "./components/Personal";
-import Profile from "./components/Profile";
-import Experience from "./components/Experience";
-import Education from "./components/Education";
-import Skills from "./components/Skills";
-import Languages from "./components/Languages";
+import Personal from "./components/Personal/Personal";
+import Profile from "./components/Profile/Profile";
+import Experience from "./components/Experience/Experience";
+import Education from "./components/Education/Education";
+import Skills from "./components/Skills/Skills";
+import Languages from "./components/Languages/Languages";
 import "./App.css"
 
 class App extends Component {

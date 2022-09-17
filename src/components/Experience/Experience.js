@@ -66,7 +66,7 @@ const Experience = () => {
   };
 
   return (
-    <>
+    <div className="Experience">
       <h1>Experience</h1>
 
       {
@@ -152,7 +152,7 @@ const Experience = () => {
         <button type="submit" >add</button>
       </form>
 
-    </>
+    </div>
   )
 };
 

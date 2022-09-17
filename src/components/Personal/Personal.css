@@ -1,24 +1,23 @@
 .Personal {
-  margin: 24px;
-  margin-bottom: auto;
+  margin: 0;
   display: flex;
   align-items: center;
   flex-direction: row;
   background-color:bisque;
 }
+
 .Personal input {
   background: none;
 }
+
 input:focus {
   background-color: whitesmoke;
   outline: 1px black solid;
 }
+
 input:hover {
   background-color: whitesmoke;
   outline: 1px gray solid;
-}
-button{
-  align-self: flex-end;
 }
 
 .main > div, .side div {
@@ -31,6 +30,7 @@ button{
   font-weight: 800;
   margin-bottom: 0px;
 }
+
 .headline input:last-child{
   font-size: 21px;
   font-weight: 500;
@@ -53,6 +53,7 @@ button{
   height: 32vh;
   width: 32vh;
 }
+
 .photo > div {
   display: flex;
   justify-content: center;
