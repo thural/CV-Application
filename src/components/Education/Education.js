@@ -1,5 +1,6 @@
 import React, { useReducer } from "react";
 import uniqid from "uniqid";
+import './Education.css'
 
 function listReducer(state, { type, id, form, values }) {
   switch (type) {
@@ -66,7 +67,7 @@ const Education = () => {
   };
 
   return (
-    <>
+    <div className="Education">
       <h1>Education</h1>
 
       {
@@ -159,7 +160,7 @@ const Education = () => {
         </div>
         <button type="submit" >add</button>
       </form>
-    </>
+    </div>
   )
 };
 

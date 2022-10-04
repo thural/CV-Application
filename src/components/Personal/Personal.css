@@ -3,10 +3,10 @@
   display: flex;
   align-items: center;
   flex-direction: row;
-  background-color:bisque;
+  background-color: bisque;
 }
 
-.Personal input {
+input {
   background: none;
 }
 
@@ -20,18 +20,21 @@ input:hover {
   outline: 1px gray solid;
 }
 
-.main > div, .side div {
-  display: flex;
-  flex-direction: column;
+.header {
+  margin-left: 48px;
 }
 
-.headline input:first-child{
+.headline {
+  margin-bottom: 1rem;
+}
+
+.headline input:first-child {
   font-size: 30px;
   font-weight: 800;
   margin-bottom: 0px;
 }
 
-.headline input:last-child{
+.headline input:last-child {
   font-size: 21px;
   font-weight: 500;
   width: 360px;
@@ -39,7 +42,12 @@ input:hover {
   margin-top: 4px;
 }
 
-.details input{
+.details {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.details input {
   width: 360px;
   min-width: fit-content;
   margin-top: 2px;
@@ -49,12 +57,11 @@ input:hover {
   display: flex;
   background-color: purple;
   margin: 0px;
-  margin-right: 48px;
-  height: 32vh;
-  width: 32vh;
+  min-height: 32vh;
+  min-width: 32vh;
 }
 
-.photo > div {
+.photo>div {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,8 +69,4 @@ input:hover {
   width: 100%;
   margin: auto;
   color: white;
-}
-
-.headline {
-  margin-bottom: 1rem;
 }

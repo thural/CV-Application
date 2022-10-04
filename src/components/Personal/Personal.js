@@ -20,7 +20,7 @@ const Personal = () => {
   return (
     <div className="Personal">
       <div className="photo"><div><h1>add photo</h1></div></div>
-      <div>
+      <div className="header">
         <div className="headline">
           <input
             type="text"

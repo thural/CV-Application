@@ -1,17 +1,99 @@
 .App {
-  margin: 0;
+  margin: auto;
+  width: 75vw;
+  min-width: min-content;
   border: 24px solid white;
   background-color: orange;
   font-size: 16px;
 }
 
-form {
-  width: 60%;
+.content {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.side {
+  box-sizing: border-box;
+  min-width: 32vh;
+  max-width: 32vh;
+  background-color: coral;
+  padding: 1rem;
+}
+
+.main {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.main form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   min-width: fit-content;
   margin: auto;
-  background-color: white;
-  border: 1px white solid;
+  gap: 1rem;
 }
+
+.main .date {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 1rem;
+}
+
+.main textarea {
+  width: 100%;
+  resize: none;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  border-radius: 6px;
+  background-color: whitesmoke;
+  padding: 1rem;
+}
+
+input {
+  width: fit-content;
+  padding: 10px;
+  color: black;
+  border: none;
+  border-radius: 6px;
+  background-color: whitesmoke;
+}
+
+textarea:focus {
+  outline: 1px gray solid;
+}
+
+input:focus {
+  outline: 1px gray solid;
+}
+
+input[type=date] {
+  background: none;
+}
+
+button {
+  width: fit-content;
+  margin: 1em;
+  height: auto;
+  text-align: right;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: transparent;
+  border: 1px solid black;
+  color: black;
+  padding: 8px 16px;
+  border-radius: 1em;
+  box-shadow: 0px 0px 16px 0px rgb(0 0 0 / 25%);
+  float: right;
+}
+/*
+
 
 label {
   font-size: 14px;
@@ -55,12 +137,7 @@ textarea {
   display: block;
   width: 100%;
   padding: 10px;
-  resize: none;
-  box-sizing: border-box;
-  outline: none;
-  border: none;
-  border-radius: 6px;
-  background-color: whitesmoke;
+
 }
 
 textarea:focus {
@@ -90,18 +167,4 @@ input {
 .date {
   display: flex;
 }
-
-button {
-  margin: 10px;
-  height: auto;
-  text-align: right;
-  font-size: 14px;
-  font-weight: 600;
-  background-color: transparent;
-  border: 1px solid black;
-  color: black;
-  padding: 8px 16px;
-  border-radius: 16px;
-  box-shadow: 0px 0px 36px 4px rgba(0, 0, 0, 0.2);
-  float: right;
-}
+*/
