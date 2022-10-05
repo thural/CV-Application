@@ -1,9 +1,9 @@
 .App {
-  margin: auto;
+  margin: 4rem auto;
   width: 75vw;
   min-width: min-content;
   border: 24px solid white;
-  background-color: orange;
+  background-color: antiquewhite;
   font-size: 16px;
 }
 
@@ -15,10 +15,12 @@
 }
 
 .side {
+  display: flex;
+  flex-flow: column nowrap;
   box-sizing: border-box;
   min-width: 32vh;
   max-width: 32vh;
-  background-color: coral;
+  background-color: bisque;
   padding: 1rem;
 }
 
@@ -42,6 +44,8 @@
 .main .date {
   display: flex;
   flex-flow: row nowrap;
+  align-items: center;
+  text-align-last: center;
   gap: 1rem;
 }
 
@@ -57,16 +61,13 @@
 }
 
 input {
-  width: fit-content;
+  margin:0;
+  width: -webkit-fill-available;
   padding: 10px;
   color: black;
   border: none;
   border-radius: 6px;
   background-color: whitesmoke;
-}
-
-textarea:focus {
-  outline: 1px gray solid;
 }
 
 input:focus {
@@ -77,9 +78,18 @@ input[type=date] {
   background: none;
 }
 
+textarea:focus {
+  outline: 1px gray solid;
+}
+
+h1,
+h3 {
+  margin: 1rem 0;
+}
+
 button {
   width: fit-content;
-  margin: 1em;
+  margin: 1em 0;
   height: auto;
   text-align: right;
   font-size: 14px;
@@ -87,9 +97,9 @@ button {
   background-color: transparent;
   border: 1px solid black;
   color: black;
-  padding: 8px 16px;
+  padding: 8px 24px;
   border-radius: 1em;
-  box-shadow: 0px 0px 16px 0px rgb(0 0 0 / 25%);
+  box-shadow: 0px 0px 16px -4px rgb(0 0 0 / 25%);
   float: right;
 }
 /*
@@ -100,12 +110,7 @@ label {
   color: rgb(50, 50, 50);
 }
 
-h1,
-h3 {
-  margin: 10px;
-  font-size: 24px;
-  font-weight: 500;
-}
+
 
 .content {
   display: flex;

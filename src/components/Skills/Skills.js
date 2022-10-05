@@ -64,7 +64,7 @@ const Skills = () => {
 
 
   return (
-    <div clasName="Skills">
+    <div className="Skills">
       <h3>Skills</h3>
 
       {
@@ -92,7 +92,7 @@ const Skills = () => {
           onChange={(e) => handleChange(e)}
           required
         ></input>
-        {<button type="submit" >add</button>}
+        {<button type="submit" >+</button>}
       </form>
 
     </div>

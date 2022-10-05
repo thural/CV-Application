@@ -89,7 +89,7 @@ const Languages = () => {
           required
           onChange={(e) => handleChange(e)}
         ></input>
-        <button type="submit" >add</button>
+        <button type="submit" >+</button>
       </form>
 
     </div>

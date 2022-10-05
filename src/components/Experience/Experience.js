@@ -68,7 +68,7 @@ const Experience = () => {
 
   return (
     <div className="Experience">
-      <h1>Experience</h1>
+      <h2>Experience</h2>
 
       {
         list.map(job => (
@@ -150,7 +150,7 @@ const Experience = () => {
           </textarea>
         </div>
 
-        <button type="submit" >add</button>
+        <button type="submit" >+</button>
       </form>
 
     </div>

@@ -1,0 +1,18 @@
+.Education input {
+  width: -webkit-fill-available;
+  padding: 10px;
+  color: black;
+  border: none;
+  border-radius: 6px;
+  background: none;
+}
+
+.Education input:focus {
+  background-color: transparent;
+  outline: none;
+}
+
+.Education input:hover {
+  background-color: transparent;
+  outline: none;
+}

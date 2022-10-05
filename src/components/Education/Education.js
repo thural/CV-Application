@@ -68,7 +68,7 @@ const Education = () => {
 
   return (
     <div className="Education">
-      <h1>Education</h1>
+      <h2>Education</h2>
 
       {
         list.map(school => (
@@ -142,7 +142,7 @@ const Education = () => {
           type="text"
           id="title"
           name="title"
-          placeholder="job title"
+          placeholder="school title"
           required
           onChange={(e) => handleChange(e)}>
         </input>
@@ -158,7 +158,7 @@ const Education = () => {
             required>
           </textarea>
         </div>
-        <button type="submit" >add</button>
+        <button type="submit" >+</button>
       </form>
     </div>
   )

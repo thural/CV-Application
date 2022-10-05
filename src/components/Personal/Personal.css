@@ -6,18 +6,18 @@
   background-color: bisque;
 }
 
-input {
+.Personal input {
   background: none;
 }
 
-input:focus {
-  background-color: whitesmoke;
-  outline: 1px black solid;
+.Personal input:focus {
+  background-color: transparent;
+  outline: none;
 }
 
-input:hover {
-  background-color: whitesmoke;
-  outline: 1px gray solid;
+.Personal input:hover {
+  background-color: transparent;
+  outline: none;
 }
 
 .header {
@@ -29,17 +29,14 @@ input:hover {
 }
 
 .headline input:first-child {
-  font-size: 30px;
+  font-size: 24px;
   font-weight: 800;
-  margin-bottom: 0px;
+  margin-bottom: -0.5em;
 }
 
 .headline input:last-child {
-  font-size: 21px;
+  font-size: 24px;
   font-weight: 500;
-  width: 360px;
-  min-width: fit-content;
-  margin-top: 4px;
 }
 
 .details {
@@ -50,12 +47,12 @@ input:hover {
 .details input {
   width: 360px;
   min-width: fit-content;
-  margin-top: 2px;
+  margin-top: -0.5em;
 }
 
 .photo {
   display: flex;
-  background-color: purple;
+  background-color: antiquewhite;
   margin: 0px;
   min-height: 32vh;
   min-width: 32vh;
@@ -68,5 +65,5 @@ input:hover {
   height: 100%;
   width: 100%;
   margin: auto;
-  color: white;
+  color: black;
 }
